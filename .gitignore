@@ -1,0 +1,32 @@
+# Gradle and build output
+.gradle/
+build/
+bin/
+out/
+.kotlin/
+*.apk
+*.aab
+*.class
+*.dex
+
+# Local configuration (SDK path)
+local.properties
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+
+# Song files are not included in the repository
+server/src/main/resources/static/songs/*.mp3
