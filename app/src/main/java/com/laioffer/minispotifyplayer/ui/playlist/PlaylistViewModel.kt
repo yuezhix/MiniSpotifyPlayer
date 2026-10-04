@@ -28,23 +28,6 @@ class PlaylistViewModel @Inject constructor(
     )
     val uiState: StateFlow<PlaylistUiState> = _uiState.asStateFlow()
 
-
-    /*
-           viewModelScope.launch {
-             flow<Int> {
-                 Log.d("Tim", Thread.currentThread().name + " 1")
-                 emit(1)
-                 delay(1000)
-                 emit(2)
-                 delay(1000)
-                 emit(3)
-             }.flowOn(Dispatchers.IO).collect {
-                 Log.d("Tim", Thread.currentThread().name + " 2")
-                 Log.d("Tim", it.toString())
-             }
-         }
-    */
-
     // keep references so that calling fetchPlaylist again (e.g. view recreated) cancels the old jobs
     // instead of stacking up duplicate collectors
     private var playlistJob: Job? = null

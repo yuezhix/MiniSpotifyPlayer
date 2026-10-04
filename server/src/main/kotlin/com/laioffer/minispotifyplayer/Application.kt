@@ -27,7 +27,6 @@ data class Song (
     val lyric: String,
     val src: String,
     val length: String
-
 )
 
 fun main() {
@@ -35,14 +34,13 @@ fun main() {
         .start(wait = true)
 }
 
-fun Application.module() { // Extension
+fun Application.module() {
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = true
         })
     }
 
-    // TODO: adding the routing configuration here
     routing {
         get("/") {
             call.respondText("Hello World!")
@@ -51,12 +49,6 @@ fun Application.module() { // Extension
         get("/feed") {
             val jsonString: String? = this::class.java.classLoader.getResource("feed.json")?.readText()
             call.respondText(jsonString ?: "", contentType = ContentType.Application.Json)
-
-//            if (jsonString != null) {
-//                call.respondText(jsonString, contentType = ContentType.Application.Json)
-//            } else {
-//                call.respondText("", contentType = ContentType.Application.Json)
-//            }
         }
 
         get("/playlists") {
@@ -65,24 +57,10 @@ fun Application.module() { // Extension
         }
 
         get("playlist/{id}") {
-//            val jsonString: String? = this::class.java.classLoader.getResource("playlists.json")?.readText()
-            // jsonString -> List<Playlist>
-            // string/bytes -> object: deserialize/decode
-            // object -> string/bytes: serialize
-//            if (jsonString != null) {
-//                val playlists: List<Playlist> = Json.decodeFromString(ListSerializer(Playlist.serializer()), jsonString)
-//                val id = call.parameters["id"]
-//                val playlist = playlists.firstOrNull { item: Playlist ->  item.id.toString() == id }
-//                call.respondNullable(playlist)
-//            } else {
-//                call.respond("null")
-//            }
-
-            // let
-            this::class.java.classLoader.getResource("playlists.json")?.readText()?.let { jsonString -> // if (jsonString != null)
+            this::class.java.classLoader.getResource("playlists.json")?.readText()?.let { jsonString ->
                 val playlists: List<Playlist> = Json.decodeFromString(ListSerializer(Playlist.serializer()), jsonString)
                 val id = call.parameters["id"]
-                val playlist = playlists.firstOrNull { item: Playlist ->  item.id.toString() == id }
+                val playlist = playlists.firstOrNull { item: Playlist -> item.id.toString() == id }
                 call.respondNullable(playlist)
             } ?: call.respond("null")
         }
@@ -93,23 +71,5 @@ fun Application.module() { // Extension
                 resources("songs")
             }
         }
-
-    }
-
-    myRouting {
-        println("hello world")
-
-        myGet("/") {
-
-        }
     }
 }
-
-fun myRouting(block: () -> Unit) {
-    block()
-}
-
-fun myGet(path: String, block: () -> Unit) {
-
-}
-

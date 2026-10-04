@@ -86,7 +86,6 @@ fun AlbumCover(album: Album, onTap: (Album) -> Unit) {
         onTap(album)
     }) {
         Box(modifier = Modifier.size(160.dp)) {
-            // https://upload.wikimedia.org/wikipedia/en/d/d1/Stillfantasy.jpg
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = ImageRequest.Builder(LocalContext.current)

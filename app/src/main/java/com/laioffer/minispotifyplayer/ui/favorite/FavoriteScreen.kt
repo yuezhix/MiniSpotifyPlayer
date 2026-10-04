@@ -54,31 +54,6 @@ private fun FavoriteScreenContent(albums: List<Album>, onTap: (Album) -> Unit) {
     }
 }
 
-/** alternative
-@Composable
-private fun FavoriteScreenContent(albums: List<Album>, onTap: (Album) -> Unit) {
-Column(modifier = Modifier.padding(16.dp)) {
-Text(
-stringResource(id = R.string.menu_favorite),
-style = MaterialTheme.typography.h4,
-color = Color.White
-)
-Spacer(modifier = Modifier.height(16.dp))
-
-LazyColumn {
-items(albums) { album ->
-FavoriteAlbumRow(
-album = album,
-onTap = onTap
-)
-}
-
-}
-}
-}
- **/
-
-
 @Composable
 private fun FavoriteAlbumRow(album: Album, onTap: (Album) -> Unit) {
     Row(
