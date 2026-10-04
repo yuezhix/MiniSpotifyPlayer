@@ -4,6 +4,8 @@ MiniSpotifyPlayer is an Android music player app built with Kotlin and Jetpack C
 
 The app follows the MVVM pattern with Hilt for dependency injection. Album and song data come from a Ktor backend in `server/`, which returns JSON from local files and serves the MP3 files. Favorites are stored in a Room database, and playback uses ExoPlayer.
 
+<img src="docs/screenshots/home.png" alt="Home page" width="260">
+
 ## Features
 
 - Home page with album sections, shown as horizontal rows of album covers
